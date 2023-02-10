@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>News API</title>
+    <style>
+      body {
+        background-color: #f2f2f2;
+      }
+      
+      .container {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0px 0px 10px gray;
+      }
+      
+      input[type="text"] {
+        padding: 10px;
+        font-size: 16px;
+        width: 60%;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0px 0px 10px gray;
+      }
+      
+      button[type="submit"] {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0px 0px 10px gray;
+        cursor: pointer;
+      }
+      
+      .news-container {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .news-item {
+        width: 30%;
+        margin: 20px;
+        background-color: white;
+        box-shadow: 0px 0px 10px gray;
+        text-align: left;
+        padding: 20px;
+      }
+      
+      .news-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      
+      .news-description {
+        font-size: 16px;
+        color: gray;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>News API</h1>
+      <form action="/search" method="post">
+        <input type="text" name="search_term" placeholder="Search for news...">
+        <button type="submit">Search</button>
+      </form>
+      <div class="news-container">
+        {% for article in articles %}
+          <div class="news-item">
+            <p class="news-title">{{ article.title }}</p>
+            <p class="news-description">{{ article.description }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
